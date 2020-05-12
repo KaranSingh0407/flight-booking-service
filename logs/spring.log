@@ -1,0 +1,47 @@
+2020-05-09 18:24:43.729  INFO 5620 --- [restartedMain] com.fms.BookingApplication               : Starting BookingApplication on DESKTOP-0AVEKE8 with PID 5620 (C:\Users\karan\Documents\workspace-spring-tool-suite-4-4.6.1.RELEASE\Booking\target\classes started by karan in C:\Users\karan\Documents\workspace-spring-tool-suite-4-4.6.1.RELEASE\Booking)
+2020-05-09 18:24:43.731 DEBUG 5620 --- [restartedMain] com.fms.BookingApplication               : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-05-09 18:24:43.732  INFO 5620 --- [restartedMain] com.fms.BookingApplication               : No active profile set, falling back to default profiles: default
+2020-05-09 18:24:44.269  INFO 5620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-05-09 18:24:44.271  INFO 5620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2020-05-09 18:24:44.280  INFO 5620 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.fms.repository.AirportRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-05-09 18:24:44.281  INFO 5620 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.fms.repository.BookingRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-05-09 18:24:44.282  INFO 5620 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.fms.repository.FlightRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-05-09 18:24:44.284  INFO 5620 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.fms.repository.ScheduleFlightRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-05-09 18:24:44.285  INFO 5620 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.fms.repository.ScheduleRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-05-09 18:24:44.287  INFO 5620 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.fms.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-05-09 18:24:44.287  INFO 5620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 0 JDBC repository interfaces.
+2020-05-09 18:24:44.292  INFO 5620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-05-09 18:24:44.292  INFO 5620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-09 18:24:44.315  INFO 5620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22ms. Found 6 JPA repository interfaces.
+2020-05-09 18:24:44.500  INFO 5620 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9000 (http)
+2020-05-09 18:24:44.502  INFO 5620 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-09 18:24:44.502  INFO 5620 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-05-09 18:24:44.529  INFO 5620 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-09 18:24:44.530  INFO 5620 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 792 ms
+2020-05-09 18:24:44.634  INFO 5620 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-09 18:24:44.648  INFO 5620 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-05-09 18:24:44.696  INFO 5620 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-05-09 18:24:44.697  INFO 5620 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-05-09 18:24:45.252  INFO 5620 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-09 18:24:45.252  INFO 5620 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-09 18:24:45.269  INFO 5620 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-05-09 18:24:45.540  WARN 5620 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-09 18:24:45.625  INFO 5620 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-05-09 18:24:45.704  INFO 5620 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-09 18:24:45.860  INFO 5620 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-05-09 18:24:45.861  INFO 5620 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-05-09 18:24:45.870  INFO 5620 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-05-09 18:24:45.936  INFO 5620 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9000 (http) with context path ''
+2020-05-09 18:24:45.937  INFO 5620 --- [restartedMain] com.fms.BookingApplication               : Started BookingApplication in 2.273 seconds (JVM running for 269.688)
+2020-05-09 18:24:45.942  INFO 5620 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-05-09 18:24:45.943  INFO 5620 --- [restartedMain] com.fms.BookingApplication               : Application Running.
+2020-05-09 18:24:52.673  INFO 5620 --- [http-nio-9000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-09 18:24:52.674  INFO 5620 --- [http-nio-9000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-09 18:24:52.683  INFO 5620 --- [http-nio-9000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-05-09 18:24:52.927  INFO 5620 --- [http-nio-9000-exec-1] com.fms.service.BookingServiceImpl       : fetching booking with user id 12
+2020-05-09 18:24:52.927  INFO 5620 --- [http-nio-9000-exec-1] com.fms.controller.BookingController     : Booking list for user id 12 Found
+2020-05-09 18:26:12.448  INFO 5620 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-09 18:26:12.450  INFO 5620 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-09 18:26:12.452  INFO 5620 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2020-05-09 18:26:12.461  INFO 5620 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2020-05-09 18:26:12.565  INFO 5620 --- [restartedMain] com.fms.BookingApplication               : Starting Application.
