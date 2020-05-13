@@ -2,11 +2,9 @@ package com.cg.fms.dto;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -15,13 +13,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 //mark class as an Entity 
 @Entity
-//defining class name as Table name
-@Table
 public class Schedule
 {
 //Defining book id as primary key
 	@Id
-	@Column(name = "schedule_id")
 	private int scheduleId;
 	
 	@OneToOne
@@ -30,12 +25,10 @@ public class Schedule
 	@OneToOne
 	private Airport destinationAirport;
 	
-	@Column(name = "departure_date_time")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = ISO.DATE_TIME)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime departureDateTime;
 	
-	@Column(name =  "arrival_date_time")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = ISO.DATE_TIME)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime arrivalDateTime;

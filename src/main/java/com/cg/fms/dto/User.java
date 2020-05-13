@@ -1,57 +1,56 @@
 package com.cg.fms.dto;
 
 import java.math.BigInteger;
-
-import javax.persistence.Column;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
-@Entity(name = "User")
+
+
+
+@Entity
 public class User {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="user_seq")
+	@SequenceGenerator(name="user_seq", initialValue = 1001, allocationSize = 1000)
 	private BigInteger userId;
-	
-	@Column(name = "user_name")
-	@NotEmpty(message = "User Name is Empty")
-	@Size(min = 2, max = 40, message = "Name must be between 2 and 40 characters ")
+
+	private String fullName;
+
 	private String userName;
-	
-	@Column(name = "user_password")
-	@NotEmpty(message = "Password is Empty")
-	@Size(min = 2, max = 15, message = "Password must be between 2 and 15 characters ")
+
 	private String userPassword;
-	
-	@Column(name = "user_phone")
+
 	private String userPhone;
-	
-	@Column(name = "user_email")
-	@NotEmpty(message = "Please Enter Email Address")
-	@Email(message = "Enter Valid Email Address ")
+
 	private String email;
-	
-	@Column(name = "user_type")
-	private String userType;
-	@Column
-	private boolean active;
+
+	private String resetToken;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
 
 	public User() {
 		super();
 	}
 
-	public BigInteger getUserId() {
-		return userId;
-	}
-
-	public void setUserId(BigInteger userId) {
-		this.userId = userId;
+	public User(String fullName, String userName, String userPassword, String email, String phoneNumber) {
+		super();
+		this.fullName = fullName;
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.email = email;
+		this.userPhone = phoneNumber;
 	}
 
 	public String getUserName() {
@@ -70,6 +69,14 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
+	public BigInteger getUserId() {
+		return userId;
+	}
+
+	public void setUserId(BigInteger userId) {
+		this.userId = userId;
+	}
+
 	public String getUserPhone() {
 		return userPhone;
 	}
@@ -86,40 +93,28 @@ public class User {
 		this.email = email;
 	}
 
-	public String getUserType() {
-		return userType;
+	public String getResetToken() {
+		return resetToken;
 	}
 
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
 	}
 
-	public boolean isActive() {
-		return active;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
-	
-	
-	public User(BigInteger userId, String userName, String userPassword, String userPhone, String email, String userType,
-			boolean active) {
-		super();
-		this.userId = userId;
-		this.userName = userName;
-		this.userPassword = userPassword;
-		this.userPhone = userPhone;
-		this.email = email;
-		this.userType = userType;
-		this.active = active;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", userPhone=" + userPhone + ", email=" + email
-				+ ", userType=" + userType + "]";
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 }

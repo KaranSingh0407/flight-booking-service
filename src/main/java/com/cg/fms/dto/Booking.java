@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -23,18 +22,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
-@Table(name = "booking")
 public class Booking {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "booking_id")
 	private BigInteger bookingId;
 	
 	@Column(name = "user_id")
 	private BigInteger userId;
 	
-	@Column(name = "booking_date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = ISO.DATE_TIME)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime bookingDate;
@@ -43,13 +39,11 @@ public class Booking {
 	private List<Passenger> passengerList;
 	
 	//used Double not big double  
-	@Column(name = "ticket_cost")
 	private Double ticketCost;
 	
 	@OneToOne
 	private ScheduleFlight scheduleFlight;
 	
-	@Column(name = "no_of_passenger")
 	private Integer noOfPassengers;
 	
 	private boolean cancelled;

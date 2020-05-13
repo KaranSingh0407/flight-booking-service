@@ -1,35 +1,28 @@
 package com.cg.fms.dto;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 
 //mark class as an Entity 
 	@Entity
-//defining class name as Table name
-	@Table(name = "schedule_flight")
 public class ScheduleFlight 
 {
 	@Id
-	@Column(name = "schedule_flight_id")
 	private int scheduleFlightId;
 	
 	@OneToOne
 	private Flight flight;
 	
-	@Column(name = "available_seats")
+	
 	private int availableSeats;
 	
 	@OneToOne
 	private Schedule schedule;
 	
-	@Column(name = "ticket_cost")
 	private Double ticketCost;
 	
-	@Column(name =  "schedule_flight_state")
 	private Boolean scheduleFlightState;
 	
 	public ScheduleFlight() {

@@ -2,7 +2,6 @@ package com.cg.fms.dto;
 
 import java.math.BigInteger;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,23 +10,19 @@ import javax.validation.constraints.NotEmpty;
 
 import com.sun.istack.NotNull;
 
-@Entity(name = "flight")
+@Entity
 public class Flight {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "flight_number")
 	private BigInteger flightNumber;
 	
-	@Column(name = "flight_model")
 	@NotEmpty(message = "Flight Model is Empty")
 	private String flightModel;
 	
-	@Column(name = "carrier_name")
 	@NotEmpty(message = "Carrier Name is Empty")
 	private String carrierName;
 	
-	@Column(name = "seat_capacity")
 	@NotNull
 	private Integer seatCpacity;
 	public BigInteger getFlightNumber() {

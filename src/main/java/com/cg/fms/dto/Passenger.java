@@ -2,7 +2,6 @@ package com.cg.fms.dto;
 
 import java.math.BigInteger;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,21 +14,16 @@ public class Passenger {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "pnr_number")
 	private BigInteger pnrNumber;
 	
-	@Column(name = "passenger_name")
 	@Pattern(regexp = "^[\\p{L} .'-]+$", message = "Name should not contain special characters.")
 	private String passengerName;
 	
-	@Column(name = "passenger_age")
 	@Positive(message = "Age cannot be less than 0.")
 	private Integer passengerAge;
 	
-	@Column(name = "passenger_UIN")
 	private BigInteger passengerUIN;
 	
-	@Column(name = "luggage")
 	private Double Luggage;
 	public BigInteger getPnrNumber() {
 		return pnrNumber;
