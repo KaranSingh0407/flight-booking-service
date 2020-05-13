@@ -58,7 +58,7 @@ public class BookingServiceImpl implements BookingService {
 	public Booking modifyBooking(Booking booking) throws InvalidBookingException{
 		
 		Optional<Booking> bookingUpdate = bookingRepository.findById(booking.getBookingId());
-		if(bookingUpdate.isEmpty())
+		if(!bookingUpdate.isPresent())
 			throw new InvalidBookingException("Booking not found");
 		bookingUpdate.get().setCancelled(booking.isCancelled());
 		logger.info("saving booking");
@@ -69,7 +69,7 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public Booking viewBooking(BigInteger bookingId) throws InvalidBookingException {
 		Optional<Booking> booking = bookingRepository.findById(bookingId);
-		if (booking.isEmpty())
+		if (!booking.isPresent())
 			throw new InvalidBookingException("Booking Not Found");
 		checkBookingExpiry(booking.get());
 		logger.info("Fetching booking");
@@ -81,7 +81,7 @@ public class BookingServiceImpl implements BookingService {
 		
 		Optional<List<Booking>> bookings;
 		bookings = bookingRepository.findByUserId(userId);
-		if (bookings.isEmpty())
+		if (!bookings.isPresent())
 			throw new InvalidBookingException("No Booking Found");
 		for(Booking booking : bookings.get())
 			checkBookingExpiry(booking);
@@ -94,7 +94,7 @@ public class BookingServiceImpl implements BookingService {
 	
 		Optional<Booking> booking = bookingRepository.findById(bookingId);
 		validateBooking(booking.get());
-		if (booking.isEmpty())
+		if (!booking.isPresent())
 			throw new InvalidBookingException("No booking found");
 		booking.get().setCancelled(true);
 		logger.info("Booking cancelling...");
@@ -134,8 +134,7 @@ public class BookingServiceImpl implements BookingService {
 	public void validatePassenger(Passenger passenger) throws InvalidBookingException{
 		
 		logger.info("Validating passenger");
-		if (passenger.getPassengerName().isBlank() || passenger.getPassengerName().isEmpty() ||
-					passenger.getPassengerName()==null)
+		if (passenger.getPassengerName() == null || passenger.getPassengerName().isEmpty())
 			throw new InvalidBookingException("Name field empty");
 		else if(passenger.getPassengerAge() == (null))
 			throw new InvalidBookingException("Age field Empty");

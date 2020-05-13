@@ -55,7 +55,7 @@ public class BookingController {
 			logger.error(e.getMessage());
 			return ResponseEntity.ok(new RestResponse<>(false, e.getMessage()));
 		}
-		logger.info("Booking list for user id "+userId +" Found");
+		logger.info("Booking list for user Found");
 		return ResponseEntity.ok(new RestResponse<>(true, "Booking list for user id "+userId +" Found", bookings));
 	}
 
@@ -65,11 +65,11 @@ public class BookingController {
 		try {
 			booking = bookingService.viewBooking(bookingId);
 		} catch (InvalidBookingException e) {
-			logger.error("Booking with id " +bookingId +" not found");
+			logger.error("Booking not found");
 			return ResponseEntity.ok(new RestResponse<>(false, e.getMessage()));
 		}
-		logger.info("Booking with id " + bookingId +" found");
-		return ResponseEntity.ok(new RestResponse<>(true, "Booking with id " + bookingId +" found",booking));
+		logger.info("Booking found");
+		return ResponseEntity.ok(new RestResponse<>(true, "Booking found",booking));
 	}
 
 	@PostMapping("/add")
@@ -96,7 +96,7 @@ public class BookingController {
 			logger.error(e.getMessage());
 			return ResponseEntity.ok(new RestResponse<>(false, e.getMessage()));
 		}
-		logger.info("Booking Saved with id "+bookingUpdate.getBookingId());
+		logger.info("Booking Saved");
 		return ResponseEntity.ok(new RestResponse<>(true, "Booking Added", bookingUpdate));
 	}
 
@@ -105,8 +105,8 @@ public class BookingController {
 		Optional<Booking> bookingUpdate;
 		bookingUpdate = bookingRepository.findById(booking.getBookingId());
 
-		if (bookingUpdate.isEmpty()) {
-			logger.error("No booking found with id "+ booking.getBookingId());
+		if (!bookingUpdate.isPresent()) {
+			logger.error("No booking found");
 			return ResponseEntity.ok(new RestResponse<>(false, "Booking Not Found"));
 		}
 		else if (bookingUpdate.get().getNoOfPassengers() != booking.getPassengerList().size()) {
@@ -134,7 +134,7 @@ public class BookingController {
 				logger.error(e.getMessage());
 				return ResponseEntity.ok(new RestResponse<>(false, e.getMessage()));
 			}
-			logger.info("Booking with id "+bookingUpdate.get().getBookingId()+" modified succesfully");
+			logger.info("Booking modified succesfully");
 			return ResponseEntity.ok(new RestResponse<>(true, "Booking Modified", bookingUpdate.get()));
 		}
 	}
@@ -152,30 +152,5 @@ public class BookingController {
 
 	}
 
-
-	/*
-	 * @GetMapping("/findflight") public ResponseEntity<?>
-	 * findFlight(@RequestParam("source_airport") String srcCode,
-	 * 
-	 * @RequestParam("destination_airport") String
-	 * destCode, @RequestParam("journeydate") String doj){ Optional<Airport>
-	 * sourceAirport = airportRepository.findById(srcCode); Optional<Airport>
-	 * destinationAirport = airportRepository.findById(destCode); DateTimeFormatter
-	 * formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); LocalDateTime
-	 * journeyDate = LocalDateTime.parse(doj,formatter);
-	 * 
-	 * if(sourceAirport.isEmpty()) { logger.error("Source Airport Not Correct");
-	 * return ResponseEntity.ok(new RestResponse<>(false,
-	 * "Source Airport Not Correct")); } else if(destinationAirport.isEmpty()) {
-	 * logger.error("Destination Airport Not Correct"); return ResponseEntity.ok(new
-	 * RestResponse<>(false, "Destination Airport Not Correct")); }
-	 * Optional<List<ScheduleFlight>> schedule = scheduleRepository.
-	 * findBysourceAirportAndDestinationAirportAndDepartureDateTime(
-	 * sourceAirport.get(),destinationAirport.get(), journeyDate);
-	 * if(schedule.isEmpty()) { logger.error("Schedule not found"); return
-	 * ResponseEntity.ok(new RestResponse<>(false, "Schedule not found")); }
-	 * logger.info("flights Found"); return ResponseEntity.ok(new
-	 * RestResponse<>(true, "Flights Found", schedule.get())); }
-	 */
 
 }
